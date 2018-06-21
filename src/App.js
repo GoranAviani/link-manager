@@ -17,13 +17,29 @@ class App extends Component {
             Edit a link.
             Delete a link.
         </p>
+
         <div className="Link-container">
-            < input type = "text" className = "todo-input" placeholder ="What needs to
-                be done" ref = {this.todoInput} onKeyUp={this.addTodo}/>
+            < input type = "text" className = "link-input" placeholder ="Add a link to the list" ref = {this.linkInput} onKeyUp={this.addLink}/>
+
+
+        {/* Display links*/}
+            {this.state.links.map((x,indeks) =>
+                <div key={x.id} className="link-item">
+                    <div className="link-item-left">
+
+
+                        <div className="link-item-label">{x.title}</div>
+                    </div>
+
+
+                </div>
+            )}
+
         </div>
 
 
-          
+
+
 
       </div>
     );
@@ -31,7 +47,7 @@ class App extends Component {
 
 
 
-
+linkInput = React.createRef();
 
 state = {
 
@@ -41,7 +57,7 @@ state = {
             'id':1,
             'title': 'google',
             'url': 'www.google.com',
-            'editing': false,
+            'editing': 'www.index.hr',
         },
         {
             'id':3,
@@ -51,11 +67,52 @@ state = {
         {
             'id':3,
             'title': 'third',
-            'url': 'www.coco.cc',
+            'url': 'www.index.hr',
         },
 
     ]
 }
+
+
+
+addLink = event => {
+      if (event.key === 'Enter'){
+        const userLinkInput = (this.linkInput.current.value);
+
+        /*if input is none dont add it*/
+        if(userLinkInput.trim().length === 0){
+            return;
+        }
+
+        this.setState((prevState, props) => {
+            let linksPreviousState = prevState.links;
+            let idLink = prevState.idLink + 1;
+
+            linksPreviousState.push({
+                id:idLink,
+                title:userLinkInput,
+                url: 'www.google.com'
+            });
+
+          return {
+                /*todos are being updated/replaced with  todosPreviousState
+                 todos: todosPreviousState,*/
+                linksPreviousState, idLink
+          };
+        });
+/*todoInput field to ''*/
+this.linkInput.current.value ='';
+      }
+}
+
+
+
+
+
+
+
+
+
 
 
 
