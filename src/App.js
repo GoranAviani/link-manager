@@ -30,6 +30,7 @@ class App extends Component {
 
 
                         <div className="link-item-label">{x.title}</div>
+                        <a href={x.url}><button>{x.title}</button></a>
                     </div>
 
 
@@ -57,18 +58,17 @@ state = {
         {
             'id':1,
             'title': 'google',
-            'url': 'www.google.com',
-            'editing': 'www.index.hr',
+            'url': 'http://www.google.com',
         },
         {
             'id':2,
             'title': 'index',
-            'url': 'www.index.hr'
+            'url': 'http://www.index.hr'
         },
         {
             'id':3,
             'title': 'third',
-            'url': 'www.index.hr',
+            'url': 'http://www.index.hr',
         },
 
     ]
