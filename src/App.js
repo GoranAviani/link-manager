@@ -27,9 +27,6 @@ class App extends Component {
             {this.state.links.map((x,indeks) =>
                 <div key={x.id} className="link-item">
                     <div className="link-item-left">
-
-
-                        <div className="link-item-label">{x.title}</div>
                         <a href={x.url}><button>{x.title}</button></a>
                     </div>
 
@@ -78,13 +75,19 @@ state = {
 
 addLink = event => {
       if (event.key === 'Enter'){
-        const userLinkInput = (this.linkInputName.current.value);
+        const userLinkInputName = (this.linkInputName.current.value);
         const userLinkInputURL = (this.linkInputURL.current.value);
 
 
         /*if input is none dont add it*/
-        if(userLinkInput.trim().length === 0){
-            return;
+         if(userLinkInputURL.trim().length === 0){
+             alert("Please enter Link URL")
+             return;
+          }
+
+        if(userLinkInputName.trim().length === 0){
+           alert("Please enter Link Name")
+             return;
         }
 
         this.setState((prevState, props) => {
@@ -93,7 +96,7 @@ addLink = event => {
 
             linksPreviousState.push({
                 id:idLink,
-                title:userLinkInput,
+                title:userLinkInputName,
                 url: userLinkInputURL,
             });
             console.log(linksPreviousState)
