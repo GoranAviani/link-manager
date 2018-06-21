@@ -19,7 +19,8 @@ class App extends Component {
         </p>
 
         <div className="Link-container">
-            < input type = "text" className = "link-input" placeholder ="Add a link to the list" ref = {this.linkInput} onKeyUp={this.addLink}/>
+            < input type = "text" className = "link-input" placeholder ="Link name" ref = {this.linkInput}/>
+            < input type = "text" className = "link-input" placeholder ="Link URL" ref = {this.linkInputURL} onKeyUp={this.addLink}/>
 
 
         {/* Display links*/}
@@ -48,7 +49,7 @@ class App extends Component {
 
 
 linkInput = React.createRef();
-
+linkInputURL = React.createRef();
 state = {
 
     idLink: 4,
@@ -78,6 +79,8 @@ state = {
 addLink = event => {
       if (event.key === 'Enter'){
         const userLinkInput = (this.linkInput.current.value);
+        const userLinkInputURL = (this.linkInputURL.current.value);
+
 
         /*if input is none dont add it*/
         if(userLinkInput.trim().length === 0){
@@ -91,7 +94,7 @@ addLink = event => {
             linksPreviousState.push({
                 id:idLink,
                 title:userLinkInput,
-                url: 'www.google.com'
+                url: userLinkInputURL,
             });
             console.log(linksPreviousState)
           return {
