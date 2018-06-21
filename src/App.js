@@ -19,7 +19,7 @@ class App extends Component {
         </p>
 
         <div className="Link-container">
-            < input type = "text" className = "link-input" placeholder ="Link name" ref = {this.linkInput}/>
+            < input type = "text" className = "link-input" placeholder ="Link name" ref = {this.linkInputName}/>
             < input type = "text" className = "link-input" placeholder ="Link URL" ref = {this.linkInputURL} onKeyUp={this.addLink}/>
 
 
@@ -48,7 +48,7 @@ class App extends Component {
 
 
 
-linkInput = React.createRef();
+linkInputName = React.createRef();
 linkInputURL = React.createRef();
 state = {
 
@@ -78,7 +78,7 @@ state = {
 
 addLink = event => {
       if (event.key === 'Enter'){
-        const userLinkInput = (this.linkInput.current.value);
+        const userLinkInput = (this.linkInputName.current.value);
         const userLinkInputURL = (this.linkInputURL.current.value);
 
 
@@ -102,7 +102,8 @@ addLink = event => {
           };
         });
 /*todoInput field to ''*/
-this.linkInput.current.value ='';
+this.linkInputName.current.value ='';
+this.linkInputURL.current.value ='';
       }
 }
 
