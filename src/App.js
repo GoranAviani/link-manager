@@ -8,7 +8,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Amibit's react link manager</h1>
+          <h1 className="App-title">Amibit's React link manager</h1>
         </header>
         <p className="App-intro">
           List of links that on every link opens it in browser.
@@ -60,7 +60,7 @@ state = {
             'editing': 'www.index.hr',
         },
         {
-            'id':3,
+            'id':2,
             'title': 'index',
             'url': 'www.index.hr'
         },
@@ -93,10 +93,8 @@ addLink = event => {
                 title:userLinkInput,
                 url: 'www.google.com'
             });
-
+            console.log(linksPreviousState)
           return {
-                /*todos are being updated/replaced with  todosPreviousState
-                 todos: todosPreviousState,*/
                 linksPreviousState, idLink
           };
         });
