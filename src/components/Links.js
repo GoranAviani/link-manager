@@ -16,6 +16,12 @@ class Links extends Component {
                 <div key={x.id} className="link-item">
                     <div className="link-item-left">
                         <a href={x.url}><button>{x.title}</button></a>
+
+                        <div className="remove-item" onClick = {(event) => this.deleteLink(indeks)}>
+                            &times;
+                        </div>
+
+
                     </div>
 
 
@@ -103,6 +109,18 @@ this.linkInputURL.current.value ='';
 
 
 
+
+deleteLink = (indeks) =>{
+    console.log("deleting indeks " + indeks)
+
+        this.setState((prevState, props) => {
+            let todosPreviousStateDel = prevState.links;
+
+            todosPreviousStateDel.splice(indeks, 1);
+
+            return { todosPreviousStateDel };
+        });
+}
 
 
 
